@@ -1,0 +1,90 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 0.5rem;
+    border: 1px solid #333333;
+}
+
+.column1 {
+    float: left;
+    width: 57.75%;
+    padding: 5px;
+}
+
+.column2 {
+    float: left;
+    width: 42.25%;
+    padding: 5px
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+input, select, textarea {
+    padding: 0.375rem 0.75rem;
+    margin-bottom: 4px;
+}
+
+label {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0.5rem 0.75rem;
+}
+
+.form-label-column {
+    float: left;
+    width: fit-content;
+    padding: 5px;
+}
+
+.form-input-column {
+    float: left;
+    width: fit-content;
+    padding: 5px;
+}
+
+.form-container {
+    display: flex;
+}
+
+.form-label-column,
+.form-input-column {
+    flex: 1;
+}
+
+.form-notes-container {
+    clear: both;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.notes-input-box {
+    margin-left: 12px;
+    width: 40%;
+    height: 65px;
+}
