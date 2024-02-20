@@ -62,20 +62,20 @@ namespace Mission06_Brock.Controllers {
         [HttpPost]
         public IActionResult EditMovie(Movie app) { // Save the changes of our edit
             // THIS IS NOT WORKING, FIX!!
-            //if (ModelState.IsValid) { // Update the record 
-            _context.Update(app);
-            _context.SaveChanges();
+            if (ModelState.IsValid) { // Update the record 
+                _context.Update(app);
+                _context.SaveChanges();
 
-            return RedirectToAction("MovieCollection");
-            //}
-            //else {
+                return RedirectToAction("MovieCollection");
+            }
+            else {
                 // Get all of the options for the different categories
-                //ViewBag.categories = _context.Categories
-                    //.OrderBy(x => x.Category)
-                    //.ToList();
+                ViewBag.categories = _context.Categories
+                    .OrderBy(x => x.Category)
+                    .ToList();
 
-                //return View("MovieForm", app);
-            //}
+                return View("MovieForm", app);
+            }
         }
 
         [HttpGet]

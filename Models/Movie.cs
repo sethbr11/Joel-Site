@@ -16,7 +16,7 @@ namespace Mission06_Brock.Models {
 
         [Required(ErrorMessage = "Please include a valid year for the movie")]
         [Range(minimum: 1888, maximum: Double.MaxValue, ErrorMessage = "Year must be at least 1888")]
-        public int Year { get; set; } = 0;
+        public int Year { get; set; }
 
         public string? Director { get; set; }
 
