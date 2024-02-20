@@ -1,4 +1,4 @@
-﻿@model Movies
+﻿@model Movie
 @{
     ViewData["Title"] = "Suggest a Movie";
 }
@@ -61,6 +61,9 @@
         <br /><br />
         <button type="submit" class="btn btn-primary" style="margin-left: 12px">Submit</button>
     </div>
+
+    <!--Invalid input feedback-->
+    <div asp-validation-summary="All" style="color:red"></div>
 </form>
 
 

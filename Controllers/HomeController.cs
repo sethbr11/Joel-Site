@@ -21,14 +21,23 @@ namespace Mission06_Brock.Controllers {
                 .OrderBy(x => x.Category)
                 .ToList();
 
-            return View();
+            return View(new Movie());
         }
         [HttpPost]
-        public IActionResult MovieForm(Movies response) { // Add the movie recommendation to table
-            _context.Movies.Add(response); // Add the record to the database
-            _context.SaveChanges(); // This makes the changes permanent (commits the changes)
+        public IActionResult MovieForm(Movie response) { // Add the movie recommendation to table
+            if (ModelState.IsValid) {
+                _context.Movies.Add(response); // Add the record to the database
+                _context.SaveChanges(); // This makes the changes permanent (commits the changes)
 
-            return View("MovieAppConfirmation", response); // Go to confirmation screen
+                return View("MovieAppConfirmation", response); // Go to confirmation screen
+            }
+            else { // For invalid responses, send them back to change their responses
+                ViewBag.categories = _context.Categories
+                    .OrderBy(x => x.Category)
+                    .ToList();
+
+                return View(response); 
+            } 
         }
 
         [HttpGet]
@@ -51,12 +60,22 @@ namespace Mission06_Brock.Controllers {
             return View("MovieForm", recordToEdit);
         }
         [HttpPost]
-        public IActionResult EditMovie(Movies app) { // Save the changes of our edit
-            // Update the record 
+        public IActionResult EditMovie(Movie app) { // Save the changes of our edit
+            // THIS IS NOT WORKING, FIX!!
+            //if (ModelState.IsValid) { // Update the record 
             _context.Update(app);
             _context.SaveChanges();
 
             return RedirectToAction("MovieCollection");
+            //}
+            //else {
+                // Get all of the options for the different categories
+                //ViewBag.categories = _context.Categories
+                    //.OrderBy(x => x.Category)
+                    //.ToList();
+
+                //return View("MovieForm", app);
+            //}
         }
 
         [HttpGet]
@@ -67,7 +86,7 @@ namespace Mission06_Brock.Controllers {
             return View(recordToDelete); 
         }
         [HttpPost]
-        public IActionResult DeleteMovie(Movies app) {
+        public IActionResult DeleteMovie(Movie app) {
             // Delete the record
             _context.Movies.Remove(app);
             _context.SaveChanges();

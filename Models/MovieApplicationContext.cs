@@ -6,7 +6,7 @@ namespace Mission06_Brock.Models {
         public MovieApplicationContext(DbContextOptions<MovieApplicationContext> options) : base (options) {
 
         }
-        public DbSet<Movies> Movies { get; set; }
+        public DbSet<Movie> Movies { get; set; }
         public DbSet<Categories> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
