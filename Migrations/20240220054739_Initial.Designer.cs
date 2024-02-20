@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mission06_Brock.Models;
 
@@ -10,9 +11,11 @@ using Mission06_Brock.Models;
 namespace Mission06_Brock.Migrations
 {
     [DbContext(typeof(MovieApplicationContext))]
-    partial class MovieApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20240220054739_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.2");

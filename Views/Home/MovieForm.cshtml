@@ -1,4 +1,4 @@
-﻿@model MovieApplication
+﻿@model Movies
 @{
     ViewData["Title"] = "Suggest a Movie";
 }
@@ -10,20 +10,27 @@
 
 <form method="post">
     <div class="form-label-column">
-        <label asp-for="Category">Category:</label><br />
+        <label asp-for="CategoryId">Category:</label><br />
         <label asp-for="Title">Title:</label><br />
         <label asp-for="Year">Year:</label><br />
         <label asp-for="Director">Director:</label><br />
         <label asp-for="Rating">Rating:</label><br />
         <label asp-for="Edited">Edited?</label><br />
-        <label asp-for="LentTo">Lent To:</label>
+        <label asp-for="LentTo">Lent To:</label><br />
+        <label asp-for="CopiedToPlex">Copied to Plex:</label>
     </div>
     <div class="form-input-column">
-        <input asp-for="Category" /><br />
+        <select asp-for="CategoryId">
+            <option value="">--</option>
+            @foreach (Categories c in ViewBag.Categories) {
+                <option value="@c.CategoryId">@c.Category</option>
+            }
+        </select><br />
         <input asp-for="Title" /><br />
         <input asp-for="Year" /><br />
         <input asp-for="Director" /><br />
         <select asp-for="Rating">
+            <option value="">--</option>
             <option value="G">G</option>
             <option value="PG">PG</option>
             <option value="PG-13">PG-13</option>
@@ -38,11 +45,14 @@
             <option value="TV-MA">TV-MA</option>
         </select><br />
         <select asp-for="Edited">
-            <option value="">--</option>
             <option value="true">Yes</option>
             <option value="false">No</option>
         </select><br />
         <input asp-for="LentTo" /><br />
+        <select asp-for="CopiedToPlex">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select><br />
     </div>
     <div class="form-notes-container">
         <label asp-for="Notes">Notes:</label><br />

@@ -20,11 +20,15 @@ namespace Mission06_Brock.Controllers {
         }
         [HttpGet]
         public IActionResult MovieForm() {
+            ViewBag.categories = _context.Categories
+                .OrderBy(x => x.Category)
+                .ToList();
+
             return View();
         }
         [HttpPost]
-        public IActionResult MovieForm(MovieApplication response) {
-            _context.Applications.Add(response); // Add the record to the database
+        public IActionResult MovieForm(Movies response) {
+            _context.Movies.Add(response); // Add the record to the database
             _context.SaveChanges(); // This makes the changes permanent (commits the changes)
 
             return View("MovieAppConfirmation", response);
@@ -32,7 +36,7 @@ namespace Mission06_Brock.Controllers {
         [HttpGet]
         public IActionResult MovieCollection() {
             // Linq
-            var applications = _context.Applications.ToList();
+            var applications = _context.Movies.ToList();
             return View(applications);
         }
     }
