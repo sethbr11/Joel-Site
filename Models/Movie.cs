@@ -12,7 +12,7 @@ namespace Mission06_Brock.Models {
         public Categories? Category { get; set; }
 
         [Required(ErrorMessage = "Please include the title of your movie")]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         [Required(ErrorMessage = "Please include a valid year for the movie")]
         [Range(minimum: 1888, maximum: Double.MaxValue, ErrorMessage = "Year must be at least 1888")]
