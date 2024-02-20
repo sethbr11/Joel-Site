@@ -5,6 +5,7 @@
 
 <div class="text-center">
     <h1>Movie Collection</h1>
+    <br />
 </div>
 
 <div>
@@ -35,6 +36,9 @@
                     <td>@x.LentTo</td>
                     <td>@x.CopiedToPlex</td>
                     <td>@x.Notes</td>
+
+                    <td> <a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-movieId="@x.MovieId">Edit</a></td>
+                    <td> <a class="btn btn-danger">Delete</a></td>
                 </tr>
             }
         </tbody>
