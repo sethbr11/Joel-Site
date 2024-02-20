@@ -1,0 +1,55 @@
+﻿@model MovieApplication
+@{
+    ViewData["Title"] = "Suggest a Movie";
+}
+
+<div class="text-center">
+    <h1>Suggest a Movie</h1>
+    <p>Suggest some movies to add to my collection!</p>
+</div>
+
+<form method="post">
+    <div class="form-label-column">
+        <label asp-for="Category">Category:</label><br />
+        <label asp-for="Title">Title:</label><br />
+        <label asp-for="Year">Year:</label><br />
+        <label asp-for="Director">Director:</label><br />
+        <label asp-for="Rating">Rating:</label><br />
+        <label asp-for="Edited">Edited?</label><br />
+        <label asp-for="LentTo">Lent To:</label>
+    </div>
+    <div class="form-input-column">
+        <input asp-for="Category" /><br />
+        <input asp-for="Title" /><br />
+        <input asp-for="Year" /><br />
+        <input asp-for="Director" /><br />
+        <select asp-for="Rating">
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+            <option value="NR">NR</option>
+            <option value="UR">UR</option>
+            <option value="TV-Y">TV-Y</option>
+            <option value="TV-Y7">TV-Y7</option>
+            <option value="TV-G">TV-G</option>
+            <option value="TV-PG">TV-PG</option>
+            <option value="TV-14">TV-14</option>
+            <option value="TV-MA">TV-MA</option>
+        </select><br />
+        <select asp-for="Edited">
+            <option value="">--</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select><br />
+        <input asp-for="LentTo" /><br />
+    </div>
+    <div class="form-notes-container">
+        <label asp-for="Notes">Notes:</label><br />
+        <textarea asp-for="Notes" class="notes-input-box"></textarea>
+        <br /><br />
+        <button type="submit" style="margin-left: 12px">Submit</button>
+    </div>
+</form>
+
+

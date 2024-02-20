@@ -19,17 +19,21 @@ namespace Mission06_Brock.Controllers {
             return View();
         }
         [HttpGet]
-        public IActionResult MovieCollection() {
+        public IActionResult MovieForm() {
             return View();
         }
         [HttpPost]
-        public IActionResult MovieCollection(MovieApplication response) {
+        public IActionResult MovieForm(MovieApplication response) {
             _context.Applications.Add(response); // Add the record to the database
             _context.SaveChanges(); // This makes the changes permanent (commits the changes)
 
-            // NOTE: THIS DOES NOT HANDLE INVALID INPUTS YET! Will need to implement try/catch
-
             return View("MovieAppConfirmation", response);
+        }
+        [HttpGet]
+        public IActionResult MovieCollection() {
+            // Linq
+            var applications = _context.Applications.ToList();
+            return View(applications);
         }
     }
 }
