@@ -12,23 +12,23 @@ namespace Mission06_Brock.Models {
         public Categories? Category { get; set; }
 
         [Required(ErrorMessage = "Please include the title of your movie")]
-        public string Title { get; set; } = "";
+        public string Title { get; set; }
 
         [Required(ErrorMessage = "Please include a valid year for the movie")]
         [Range(minimum: 1888, maximum: Double.MaxValue, ErrorMessage = "Year must be at least 1888")]
-        public int Year { get; set; }
+        public int? Year { get; set; }
 
         public string? Director { get; set; }
 
         public string? Rating { get; set; }
 
         [Required(ErrorMessage = "Please include if the movie was edited or not")]
-        public bool Edited { get; set; } = false;
+        public bool? Edited { get; set; }
 
         public string? LentTo { get; set; }
 
         [Required(ErrorMessage = "Please indicate if the movie was copied to Plex servers")]
-        public bool CopiedToPlex { get; set; } = false;
+        public bool? CopiedToPlex { get; set; }
 
         [StringLength(25, ErrorMessage = "Notes must be under 25 characters")] // Character count of 25 max
         public string? Notes { get; set; }
