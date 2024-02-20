@@ -39,7 +39,7 @@ namespace Mission06_Brock.Controllers {
         }
 
         [HttpGet]
-        public IActionResult Edit(int movieId) { // Go to our movie recommendation form, but this time to edit an existing entry
+        public IActionResult EditMovie(int movieId) { // Go to our movie recommendation form, but this time to edit an existing entry
             var recordToEdit = _context.Movies
                 .Single(x => x.MovieId == movieId); // This is like .Where but returns just one record instead of a list
 
@@ -51,12 +51,28 @@ namespace Mission06_Brock.Controllers {
             return View("MovieForm", recordToEdit);
         }
         [HttpPost]
-        public IActionResult Edit(Movies app) { // Save the changes of our edit
+        public IActionResult EditMovie(Movies app) { // Save the changes of our edit
             // Update the record 
             _context.Update(app);
             _context.SaveChanges();
 
             return RedirectToAction("MovieCollection");
         }
-     }
+
+        [HttpGet]
+        public IActionResult DeleteMovie(int movieId) {
+            var recordToDelete = _context.Movies
+                .Single(x => x.MovieId == movieId);
+
+            return View(recordToDelete); 
+        }
+        [HttpPost]
+        public IActionResult DeleteMovie(Movies app) {
+            // Delete the record
+            _context.Movies.Remove(app);
+            _context.SaveChanges();
+
+            return RedirectToAction("MovieCollection");
+        }
+    }
 }

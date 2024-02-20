@@ -37,8 +37,8 @@
                     <td>@x.CopiedToPlex</td>
                     <td>@x.Notes</td>
 
-                    <td> <a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-movieId="@x.MovieId">Edit</a></td>
-                    <td> <a class="btn btn-danger">Delete</a></td>
+                    <td> <a class="btn btn-primary" asp-controller="Home" asp-action="EditMovie" asp-route-movieId="@x.MovieId">Edit</a></td>
+                    <td> <a class="btn btn-danger" asp-controller="Home" asp-action="DeleteMovie" asp-route-movieId="@x.MovieId">Delete</a></td>
                 </tr>
             }
         </tbody>
