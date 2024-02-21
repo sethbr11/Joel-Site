@@ -9,7 +9,7 @@ namespace Mission06_Brock.Models {
         [ForeignKey("CategoryId")]
         public int? CategoryId { get; set; }
 
-        public Category? CategoryName { get; set; }
+        public Category? Category { get; set; }
 
         [Required(ErrorMessage = "Please include the title of your movie")]
         public string? Title { get; set; }

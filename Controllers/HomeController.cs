@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Mission06_Brock.Models;
 using System.Diagnostics;
 
@@ -42,7 +43,9 @@ namespace Mission06_Brock.Controllers {
 
         [HttpGet]
         public IActionResult MovieCollection() { // Go to table that shows the movie list
-            var applications = _context.Movies.ToList(); // Linq -- get our data to pass on
+            var applications = _context.Movies
+                .Include("Category")
+                .ToList(); // Linq -- get our data to pass on
 
             return View(applications);
         }
