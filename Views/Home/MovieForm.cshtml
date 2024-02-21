@@ -23,8 +23,8 @@
     <div class="form-input-column">
         <select asp-for="CategoryId">
             <option value="">--</option>
-            @foreach (Categories c in ViewBag.Categories) {
-                <option value="@c.CategoryId">@c.Category</option>
+            @foreach (Category c in ViewBag.Categories) {
+                <option value="@c.CategoryId">@c.CategoryName</option>
             }
         </select><br />
         <input asp-for="Title" /><br />

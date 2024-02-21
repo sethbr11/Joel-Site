@@ -18,7 +18,7 @@ namespace Mission06_Brock.Controllers {
         public IActionResult MovieForm() { // Go to form to submit movie recommendations
             // Get all of the options for the different categories
             ViewBag.categories = _context.Categories
-                .OrderBy(x => x.Category)
+                .OrderBy(x => x.CategoryName)
                 .ToList();
 
             return View(new Movie());
@@ -33,7 +33,7 @@ namespace Mission06_Brock.Controllers {
             }
             else { // For invalid responses, send them back to change their responses
                 ViewBag.categories = _context.Categories
-                    .OrderBy(x => x.Category)
+                    .OrderBy(x => x.CategoryName)
                     .ToList();
 
                 return View(response); 
@@ -54,7 +54,7 @@ namespace Mission06_Brock.Controllers {
 
             // Get all of the options for the different categories
             ViewBag.categories = _context.Categories
-                .OrderBy(x => x.Category)
+                .OrderBy(x => x.CategoryName)
                 .ToList();
 
             return View("MovieForm", recordToEdit);
@@ -71,7 +71,7 @@ namespace Mission06_Brock.Controllers {
             else {
                 // Get all of the options for the different categories
                 ViewBag.categories = _context.Categories
-                    .OrderBy(x => x.Category)
+                    .OrderBy(x => x.CategoryName)
                     .ToList();
 
                 return View("MovieForm", app);
