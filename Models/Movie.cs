@@ -3,13 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission06_Brock.Models {
     public class Movie {
+        // Some object are set to nullable (string?) but also have [Required]. This is so error messages display
+        // properly. Including "?" does not affect the input of the data to the database since we still have [Required]
         [Key][Required]
         public int MovieId { get; set; }
 
         [ForeignKey("CategoryId")]
-        public int? CategoryId { get; set; }
-
-        public Category? Category { get; set; }
+        public int? CategoryId { get; set; } // Our foreign key CategoryId...
+        public Category? Category { get; set; } // ...which links to a Category object
 
         [Required(ErrorMessage = "Please include the title of your movie")]
         public string? Title { get; set; }

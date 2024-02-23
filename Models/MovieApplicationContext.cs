@@ -2,10 +2,8 @@
 
 namespace Mission06_Brock.Models {
     public class MovieApplicationContext : DbContext { // Liaison from the app to the database
-        // Constructor
-        public MovieApplicationContext(DbContextOptions<MovieApplicationContext> options) : base (options) {
-
-        }
+        public MovieApplicationContext(DbContextOptions<MovieApplicationContext> options) : base (options) { } // Constructor
+        
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Category> Categories { get; set; }
 

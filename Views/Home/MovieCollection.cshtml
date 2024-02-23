@@ -27,7 +27,11 @@
         <tbody>
             @foreach (var x in Model) {
                 <tr>
-                    <td>@x.Category.CategoryName</td> <!--This needs to be fixed!!-->
+                    <td>
+                        @if (x.Category != null) { // As long as we have a Category object assigned we want to show it. If not, leave it blank
+                            @x.Category.CategoryName
+                        }
+                    </td>
                     <td>@x.Title</td>
                     <td>@x.Year</td>
                     <td>@x.Director</td>

@@ -5,11 +5,9 @@ using System.Diagnostics;
 
 namespace Mission06_Brock.Controllers {
     public class HomeController : Controller {
-        private MovieApplicationContext _context;
+        private MovieApplicationContext _context; // Stores records from the database
 
-        public HomeController(MovieApplicationContext temp) { // Constructor
-            _context = temp;
-        }
+        public HomeController(MovieApplicationContext temp) { _context = temp; } // Constructor
 
         [HttpGet] public IActionResult Index() { return View(); } // Home page
 
@@ -20,9 +18,9 @@ namespace Mission06_Brock.Controllers {
             // Get all of the options for the different categories
             ViewBag.categories = _context.Categories
                 .OrderBy(x => x.CategoryName)
-                .ToList();
+                .ToList(); // Linq -- get our data to pass on
 
-            return View(new Movie());
+            return View(new Movie()); // Pass a new movie object so we preallocate a MovieID
         }
         [HttpPost]
         public IActionResult MovieForm(Movie response) { // Add the movie recommendation to table
@@ -33,7 +31,7 @@ namespace Mission06_Brock.Controllers {
                 return View("MovieAppConfirmation", response); // Go to confirmation screen
             }
             else { // For invalid responses, send them back to change their responses
-                ViewBag.categories = _context.Categories
+                ViewBag.categories = _context.Categories // Load ViewBag again
                     .OrderBy(x => x.CategoryName)
                     .ToList();
 
@@ -44,8 +42,8 @@ namespace Mission06_Brock.Controllers {
         [HttpGet]
         public IActionResult MovieCollection() { // Go to table that shows the movie list
             var applications = _context.Movies
-                .Include("Category")
-                .ToList(); // Linq -- get our data to pass on
+                .Include("Category") // Include the table "Category" in our results (to get the CategoryName to display)
+                .ToList();
 
             return View(applications);
         }
@@ -53,7 +51,7 @@ namespace Mission06_Brock.Controllers {
         [HttpGet]
         public IActionResult EditMovie(int movieId) { // Go to our movie recommendation form, but this time to edit an existing entry
             var recordToEdit = _context.Movies
-                .Single(x => x.MovieId == movieId); // This is like .Where but returns just one record instead of a list
+                .Single(x => x.MovieId == movieId); // .Single() is like .Where() but returns just one record instead of a list
 
             // Get all of the options for the different categories
             ViewBag.categories = _context.Categories
@@ -64,7 +62,6 @@ namespace Mission06_Brock.Controllers {
         }
         [HttpPost]
         public IActionResult EditMovie(Movie app) { // Save the changes of our edit
-            // THIS IS NOT WORKING, FIX!!
             if (ModelState.IsValid) { // Update the record 
                 _context.Update(app);
                 _context.SaveChanges();
